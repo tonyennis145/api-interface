@@ -92,24 +92,6 @@ gulp.task('less', ['clean'], function() {
 
 
 /**
- * Copy lib and html folders
- */
-gulp.task('copy', ['less'], function() {
-
-  // copy JavaScript files inside lib folder
-  gulp
-    .src(['./lib/**/*.{js,map}'])
-    .pipe(gulp.dest('./lib/swagger-ui/dist/lib'))
-    .on('error', log);
-
-  // copy all files inside html folder
-  gulp
-    .src(['./lib/swagger-ui/src/main/html/**/*'])
-    .pipe(gulp.dest('./lib/swagger-ui/dist'))
-    .on('error', log);
-});
-
-/**
  * Watch for changes and recompile
  */
 gulp.task('watch', function() {
@@ -133,5 +115,5 @@ function log(error) {
 }
 
 
-gulp.task('default', ['dist', 'copy']);
+gulp.task('default', ['dist']);
 gulp.task('serve', ['connect', 'watch']);

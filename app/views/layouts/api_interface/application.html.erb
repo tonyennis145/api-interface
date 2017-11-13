@@ -19,12 +19,14 @@
 
   <script type="text/javascript">
       $(function () {
+
           var url = window.location.search.match(/url=([^&]+)/);
           if (url && url.length > 1) {
               url = decodeURIComponent(url[1]);
           } else {
               url = window.location.toString().replace(/\/*#?.*/, '/api/docs');
           }
+
 
           window.swaggerUi = new SwaggerUi({
               url: url,
@@ -54,73 +56,14 @@
 
                   $("[data-toggle='tooltip']").tooltip();
 
-                  var data = [
-                    { 
-                      "text": "Top Level", 
-                      "children" : [
-                        {
-                            "id": 1,
-                            "text": "Core FCC",
-                            "value": "http://signable_documents.services.firstcircle.dev/api/docs"
-                        },
-                        {
-                            "id": 2,
-                            "text": "Core FCA",
-                            "value": "http://pipeline_api.dev/api/docs"
-                        }
-                      ]
-                    },
-                    { 
-                      "text": "Services", 
-                      "children" : [
-                        {
-                            "id": 3,
-                            "text": "Document Signatures",
-                            "value": "http://signable_documents.services.firstcircle.dev/api/docs"
-                        }
-                      ]
-                    },
-                    { 
-                      "text": "Enrichers", 
-                      "children" : [
-                        {
-                            "id": 8,
-                            "text": "Facebook Enricher",
-                            "value": "http://signable_documents.services.firstcircle.dev/api/docs"
-                        },
-                        {
-                            "id": 9,
-                            "text": "TransUnion Enricher",
-                            "value": "http://pipeline_api.dev/api/docs"
-                        }
-                      ]
-                    },
-                    { 
-                      "text": "Decisioning", 
-                      "children" : [
-                        {
-                            "id": 10,
-                            "text": "UBL Decisioning",
-                            "value": "http://pipeline_api.dev/api/docs"
-                        },
-                        {
-                            "id": 11,
-                            "text": "PO Decisioning",
-                            "value": "http://pipeline_api.dev/api/docs"
-                        }
-                      ]
-                    }
-                  ]
-
                   $('#input_apiUrl').select2({
-                    data: data
+                    data: <%= ApiInterface::Presenter::ApiInformation.new(params[:url]).for_select2 %>
                   });
 
-                  // $('#input_apiUrl').on('select2:selecting', function(e) {
-                  //   data = e.params.args.data
-                  //   url_response = { url: data.value }
-                  //   window.swaggerUi.updateSwaggerUi(url_response)
-                  // });
+                  $('#input_apiUrl').on('select2:selecting', function(e) {
+                    apiUrl = e.params.args.data.value
+                    document.location = window.location.origin + window.location.pathname + "?url=" + apiUrl ;
+                  });
 
                   addApiKeyAuthorization();
               },
@@ -149,6 +92,7 @@
                   console.log.apply(console, arguments);
               }
           }
+
       });
   </script>
 
