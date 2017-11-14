@@ -30,7 +30,7 @@ module ApiInterface
       end
 
       def values_for_parent
-        options_with_parent.map{ |option| option["parent"] }.uniq!
+        options_with_parent.map{ |option| option["parent"] }.uniq
       end
 
       def options_with_parent
