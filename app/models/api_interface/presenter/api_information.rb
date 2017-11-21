@@ -49,6 +49,10 @@ module ApiInterface
         Rails.application.config_for(:api_options)
       end
 
+      def default_option_url
+        select_options.first["value"] || "/api/docs"
+      end
+
     end
   end
 end
