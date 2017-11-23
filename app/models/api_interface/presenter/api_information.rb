@@ -38,7 +38,8 @@ module ApiInterface
       end
 
       def options_without_parent
-        options.select{ |info| info["parent"].blank? }
+        return [] if options == {}
+        options.select{ |info| info["parent"].blank? } 
       end
 
       def options_for_parent(parent)
@@ -50,7 +51,12 @@ module ApiInterface
       end
 
       def default_option_url
-        select_options.first["value"] || "/api/docs"
+        begin 
+          return options_without_parent.first["value"] if options_without_parent.any?
+          return groupings.first["children"].first["value"]
+        rescue
+          "/docs/start"
+        end
       end
 
     end

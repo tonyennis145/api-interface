@@ -37,5 +37,5 @@
 	float: none;
 	position: absolute;
 	left: 50%;
-	height: 100%
+	min-height: 100vh;
 }
