@@ -29,15 +29,6 @@
           dom_id: "swagger-ui-container",
           supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
           onComplete: function (swaggerApi, swaggerUi) {
-              if (typeof initOAuth == "function") {
-
-                  initOAuth({
-                      clientId: "ffe7748a-3a3f-4860-a02a-42ab08e4fde2",
-                      realm: "realm",
-                      appName: "Swagger"
-                  });
-
-              }
 
               $('pre code').each(function (i, e) {
                   hljs.highlightBlock(e)
@@ -60,6 +51,11 @@
                 apiUrl = e.params.args.data.value
                 document.location = window.location.origin + window.location.pathname + "?url=" + apiUrl ;
               });
+
+              $(".close-button").click(function() {
+                div = $(this).parent();
+                div.addClass('hide')
+              })
 
               addApiKeyAuthorization();
           },
@@ -176,5 +172,6 @@
 <script type="text/javascript">
   $(function () {
       $("[data-toggle='tooltip']").tooltip();
+
   });
 </script>

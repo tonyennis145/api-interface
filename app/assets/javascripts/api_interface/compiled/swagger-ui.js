@@ -299,7 +299,7 @@ this["Handlebars"]["templates"]["operation"] = Handlebars.template({"1":function
     + escapeExpression(((helper = (helper = helpers.parentId || (depth0 != null ? depth0.parentId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"parentId","hash":{},"data":data}) : helper)))
     + "_"
     + escapeExpression(((helper = (helper = helpers.nickname || (depth0 != null ? depth0.nickname : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"nickname","hash":{},"data":data}) : helper)))
-    + "'>\n                \n                <h5>Response Body</h5>\n\n                <div class='block response_body'></div>\n                <h5>Response Code</h5>\n\n                <div class='block response_code'></div>\n                <h5>Response Headers</h5>\n\n                <div class='block response_headers'>\n\n                </div><h5>Request URL</h5>\n\n                <div class='block request_url'></div>\n            </div>\n                   \n        </div>\n\n        <div class=\"modal modal-"
+    + "'>\n                \n                <i class=\"close-button\">Close</i>\n\n                <h5 style=\"margin-top:0px\">Response Body</h5>\n\n                <div class='block response_body'></div>\n                <h5>Response Code</h5>\n\n                <div class='block response_code'></div>\n                <h5>Response Headers</h5>\n\n                <div class='block response_headers'>\n\n                </div><h5>Request URL</h5>\n\n                <div class='block request_url'></div>\n            </div>\n                   \n        </div>\n\n        <div class=\"modal modal-"
     + escapeExpression(((helper = (helper = helpers.parentId || (depth0 != null ? depth0.parentId : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"parentId","hash":{},"data":data}) : helper)))
     + "_"
     + escapeExpression(((helper = (helper = helpers.nickname || (depth0 != null ? depth0.nickname : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"nickname","hash":{},"data":data}) : helper)))
@@ -688,7 +688,7 @@ this["Handlebars"]["templates"]["signature"] = Handlebars.template({"1":function
     + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
     + "\">"
     + escapeExpression(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"type","hash":{},"data":data}) : helper)))
-    + " Schema</h4>\n    <div data-content class=\"collapse\" id=\"schema-"
+    + " Schema</h4>\n    <div data-content class=\"collapse in\" id=\"schema-"
     + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
     + "\">\n        <div class=\"description\">\n            ";
   stack1 = ((helper = (helper = helpers.signature || (depth0 != null ? depth0.signature : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"signature","hash":{},"data":data}) : helper));
