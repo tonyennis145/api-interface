@@ -2,6 +2,7 @@ module ApiInterface
   class UiController < ApplicationController
   
     include Swagger::Blocks
+    layout "api_interface/swagger_layout", only: "index"
 
     swagger_root do
       key :swagger, '2.0'
