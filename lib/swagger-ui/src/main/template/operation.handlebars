@@ -41,17 +41,17 @@
 
                 {{/if}}
 
-                <h4 data-control data-toggle="collapse" data-target="#test-{{parentId}}_{{nickname}}">
-                    Test this endpoint
-                </h4>
 
                 <div id="test-{{parentId}}_{{nickname}}">
                     <div class="sandbox_header collapse in" data-content>
-                        <input class="submit btn btn-primary" name="commit" type="submit" value="Try"
+                        <input class="submit btn btn-primary" name="commit" type="submit" value="Send Request"
                                data-target="#get_clients-modal-request">
-                        <a href="#" class="response_hider hide" style="display: inline;">Hide Response</a>
-                        <!--small class="curl-copy-message hide" style="display:none;">Copied to clipboard</small-->
-                        <!--span class="response_throbber hide" style="display: none;"></span-->
+
+                        {{#if security}}
+                            <span style="color:#ff9a57">
+                                Requires Authorization
+                            </span>
+                        {{/if}}
 
                         {{#oauth}}
                         <div class="auth">
