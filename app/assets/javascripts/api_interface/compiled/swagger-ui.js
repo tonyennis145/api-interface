@@ -649,10 +649,18 @@ this["Handlebars"]["templates"]["parameter_content_type"] = Handlebars.template(
   return buffer + "    </select>\n</div>\n";
 },"useData":true});
 this["Handlebars"]["templates"]["resource"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<ul class='endpoints' id='"
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "\n\n<ul class='endpoints' id='"
     + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
-    + "_endpoint_list'>\n</ul>";
+    + "_endpoint_list'>\n  <li class='endpoint-description' id='"
+    + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
+    + "_info'>\n    <div class='operation'>\n      <div class='content'>\n        <div class='heading'>\n          <h2>"
+    + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
+    + "</h2>\n        </div>  \n        <div class='action-summary'>\n          ";
+  stack1 = ((helper = (helper = helpers.summary || (depth0 != null ? depth0.summary : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"summary","hash":{},"data":data}) : helper));
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "\n        </div>\n        <span class='path'>\n          <a href='#!/"
+    + escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"id","hash":{},"data":data}) : helper)))
+    + "/info'></a>\n        </span>\n      </div>\n    </div>\n  </li>\n</ul>";
 },"useData":true});
 this["Handlebars"]["templates"]["response_content_type"] = Handlebars.template({"1":function(depth0,helpers,partials,data) {
   var stack1, buffer = "";
@@ -22495,6 +22503,14 @@ SwaggerUi.Views.SidebarHeaderView = Backbone.View.extend({
 
   render: function () {
     $(this.el).html(Handlebars.templates.sidebar_header(this.model));
+
+    if (this.model.description) {
+      info_item = $("<div/>")
+      info_item.addClass("item info-item")
+      info_item.html("Overview")
+      info_item.attr("data-endpoint",this.model.id + '_info')
+      $(this.el).append(info_item);
+    }
 
     for (var i = 0; i < this.model.operationsArray.length; i++) {
       var item = this.model.operationsArray[i].operation;
